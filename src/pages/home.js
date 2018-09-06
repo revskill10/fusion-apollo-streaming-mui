@@ -19,6 +19,10 @@ import post1 from './home/blog-post.1.md.js';
 import post2 from './home/blog-post.2.md.js';
 import post3 from './home/blog-post.3.md.js';
 import {Link} from 'fusion-plugin-react-router';
+import Chart from '../components/charts/Sample.js';
+import {Helmet} from 'fusion-plugin-react-helmet-async';
+
+
 const styles = theme => ({
   layout: {
     width: 'auto',
@@ -136,6 +140,10 @@ function Blog(props) {
 
   return (
     <React.Fragment>
+      <Helmet>
+        <title>Home</title>
+        <link rel="canonical" href="https://www.tanphong.org/" />
+      </Helmet>
       <CssBaseline />
       <div className={classes.layout}>
         <Toolbar className={classes.toolbarMain}>
@@ -187,18 +195,7 @@ function Blog(props) {
           <Paper className={classes.mainFeaturedPost}>
             <Grid container>
               <Grid item md={6}>
-                <div className={classes.mainFeaturedPostContent}>
-                  <Typography variant="display2" color="inherit" gutterBottom>
-                    Title of a longer featured blog post
-                  </Typography>
-                  <Typography variant="headline" color="inherit" paragraph>
-                    Multiple lines of text that form the lede, informing new readers quickly and
-                    efficiently about what&apos;s most interesting in this post&apos;s contents.
-                  </Typography>
-                  <Typography variant="title" color="inherit">
-                    Continue reading...
-                  </Typography>
-                </div>
+                <Chart />
               </Grid>
             </Grid>
           </Paper>
