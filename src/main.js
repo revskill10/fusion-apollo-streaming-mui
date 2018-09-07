@@ -18,7 +18,6 @@ import I18n, {
   createI18nLoader,
 } from 'fusion-plugin-i18n-react';
 
-
 import {FetchToken} from 'fusion-tokens';
 import HelmetPlugin from 'fusion-plugin-react-helmet-async';
 import KoaHelmet from './plugins/koa-helmet';
@@ -55,7 +54,7 @@ const registerFetch = () => (app) => {
   return app;
 }
 
-const registerTheme = () => (app) => {
+const registerTheme = (theme) => (app) => {
   app.register(CustomThemeOptionsToken, theme);
   return app;
 }
@@ -80,22 +79,13 @@ const registerHelmet = () => (app) => {
 
 
 const plugins = [
+  registerTheme(theme),
   registerHelmet(),
   registerApolloClient(),
   registerRouter(),
   registerFetch()
 ]
-/*
-const registerPlugins_1 = (app) => () => {
-  registerHelmet()(app);
-  registerApolloClient()(app);
-  registerFetch()(app);
-  registerRouter()(app);
-  return app;
-}
 
-export default registerPlugins_1(createApp(Root)(App));
-*/
 const registerPlugins_ = (compose) => (app) => (plugins) => () =>
   compose(
     ...plugins
