@@ -23,6 +23,7 @@
     "js-cookie": "^2.2.0",
     "json-stringify-safe": "^5.0.1",
     "koa-helmet": "^4.0.0",
+    "multistream": "^2.1.1",
     "prop-types": "^15.6.2",
     "ramda": "^0.25.0",
     "react": "^16.4.2",
@@ -32,6 +33,7 @@
     "react-vis": "^1.10.8",
     "recharts": "^1.1.0",
     "recompose": "^0.30.0",
+    "string-to-stream": "^1.1.1",
     "styled-components": "^3.4.5",
     "styletron-react": "^4.3.5",
     "unfetch": "^3.1.1"
