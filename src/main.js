@@ -26,6 +26,8 @@ import theme from './plugins/customTheme';
 import Root from './root.js';
 // https://github.com/ramda/ramda/issues/2322
 import * as R from 'ramda';
+import {StreamingToken} from 'fusion-core';
+
 
 const createApp = (Root) => (App) => {
   return new App(
@@ -77,8 +79,13 @@ const registerHelmet = () => (app) => {
   return app;
 }
 
+const registerStreaming = () => (app) => {
+  __NODE__ && app.register(StreamingToken, true);
+  return app;
+}
 
 const plugins = [
+  registerStreaming(),
   registerTheme(theme),
   registerHelmet(),
   registerApolloClient(),
