@@ -6,11 +6,18 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Hidden from '@material-ui/core/Hidden';
-import Divider from '@material-ui/core/Divider';
-import Markdown from './Markdown';
-import Chart from './charts/Sample.js';
 import {withStyles} from '@material-ui/core/styles';
 import post1 from './blog-post.1.md.js';
+import Navigation from './BottomNavigation.js';
+import Input from './Input';
+
+import {split} from 'fusion-react';
+const KonvaDemo = split({
+  defer: true,
+  load: () => import('./konva/Demo.js'),
+  LoadingComponent: () => <div>SSR placeholder...</div>,
+  ErrorComponent: () => <div>Error</div>,
+});
 
 const styles = theme => ({
   toolbarMain: {
@@ -103,7 +110,11 @@ function Main({classes}) {
       <Paper className={classes.mainFeaturedPost}>
         <Grid container>
           <Grid item md={6}>
-            <Chart />
+            <Navigation>
+              {(value) => {
+                return <KonvaDemo />;
+              }}
+            </Navigation>            
           </Grid>
         </Grid>
       </Paper>
@@ -138,21 +149,10 @@ function Main({classes}) {
           </Grid>
         ))}
       </Grid>
+      <Input />
       {/* End sub featured posts */}
       <Grid container spacing={40} className={classes.mainGrid}>
-        {/* Main content */}
-        <Grid item xs={12} md={8}>
-          <Typography variant="title" gutterBottom>
-            From the Firehose
-          </Typography>
-          <Divider />
-          {posts.map(post => (
-            <Markdown className={classes.markdown} key={post.substring(0, 40)}>
-              {post}
-            </Markdown>
-          ))}
-        </Grid>
-        {/* End main content */}
+        
         {/* Sidebar */}
         <Grid item xs={12} md={4}>
           <Paper elevation={0} className={classes.sidebarAboutBox}>

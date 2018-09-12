@@ -1,0 +1,6 @@
+{
+  "test": "hello ${name}",
+  "current_language": "Language",
+  "language_en": "English",
+  "choose_language": "Choose language"
+}
